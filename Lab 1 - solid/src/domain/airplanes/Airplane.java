@@ -36,5 +36,4 @@ public abstract class Airplane implements Entity {
         }
         System.out.println();
     }
-
 }
