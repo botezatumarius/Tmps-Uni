@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import domain.airplanes.Airplane;
 import domain.airplanes.Entity;
 import domain.cloning.AirportPrototype;
-import domain.passengers.Passenger;
 
 public abstract class Airport implements Entity, AirportPrototype {
     public int id;
@@ -40,6 +39,7 @@ public abstract class Airport implements Entity, AirportPrototype {
         } catch (CloneNotSupportedException e) {
             System.out.println("Was not able to clone airport");
         }
+        airportObject.airplanes = new ArrayList<Airplane>();
         return airportObject;
     }
 }

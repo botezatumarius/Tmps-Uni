@@ -22,6 +22,8 @@ public abstract class Airplane implements Entity, AirplanePrototype {
         } catch (CloneNotSupportedException e) {
             System.out.println("Was not able to clone airplane");
         }
+        airplaneObject.passengers = new ArrayList<Passenger>();
         return airplaneObject;
     }
+
 }

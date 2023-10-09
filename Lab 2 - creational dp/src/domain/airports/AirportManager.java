@@ -39,4 +39,9 @@ public class AirportManager {
         for (Airport airport : airports)
             airport.showInfo();
     }
+
+    public void showPlanes(Airport airport) {
+        for (Airplane airplane : airport.airplanes)
+            airplane.showInfo();
+    }
 }
