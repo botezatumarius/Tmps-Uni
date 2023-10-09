@@ -3,17 +3,22 @@ package domain.passengers;
 import domain.airplanes.Entity;
 
 public abstract class Passenger implements Entity {
-    public int id;
-    public String name;
-    public String ethnicity;
+    private int id;
+    private String name;
 
-    public Passenger(int id, String name, String ethnicity) {
+    public void setId(int id) {
         this.id = id;
-        this.name = name;
-        this.ethnicity = ethnicity;
     }
 
-    public void showInfo() {
-        System.out.println("Id:" + id + "\n" + "Name:" + name + "\n" + "Ethnicity:" + ethnicity + "\n");
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    protected int getId() {
+        return id;
+    }
+
+    protected String getName() {
+        return name;
     }
 }
