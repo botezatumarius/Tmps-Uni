@@ -1,10 +1,11 @@
 package domain.passengers;
 
 import domain.airplanes.Entity;
+import domain.cloning.PassengerPrototype;
 
-public abstract class Passenger implements Entity {
+public abstract class Passenger implements Entity, PassengerPrototype {
     private int id;
-    private String name;
+    public String name;
 
     public void setId(int id) {
         this.id = id;
@@ -20,5 +21,15 @@ public abstract class Passenger implements Entity {
 
     protected String getName() {
         return name;
+    }
+
+    public Passenger makeCopy() {
+        Passenger passengerObject = null;
+        try {
+            passengerObject = (Passenger) super.clone();
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Was not able to clone passenger");
+        }
+        return passengerObject;
     }
 }

@@ -3,8 +3,10 @@ package domain.airports;
 import java.util.ArrayList;
 import domain.airplanes.Airplane;
 import domain.airplanes.Entity;
+import domain.cloning.AirportPrototype;
+import domain.passengers.Passenger;
 
-public abstract class Airport implements Entity {
+public abstract class Airport implements Entity, AirportPrototype {
     public int id;
     public String location;
     public float length;
@@ -29,5 +31,15 @@ public abstract class Airport implements Entity {
             System.out.println("  - " + airplane.model);
         }
         System.out.println();
+    }
+
+    public Airport makeCopy() {
+        Airport airportObject = null;
+        try {
+            airportObject = (Airport) super.clone();
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Was not able to clone airport");
+        }
+        return airportObject;
     }
 }
