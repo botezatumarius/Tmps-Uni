@@ -1,4 +1,5 @@
-import domain.airplanes.Boeing;
+import domain.airplanes.Airplane;
+import domain.airplanes.AirplaneBuilder;
 import domain.airplanes.BoeingBuilder;
 import domain.airports.AirportManager;
 import domain.airports.General;
@@ -18,13 +19,13 @@ public class Main {
         Passenger George = passengerFactory.createPassenger("Child");
         George.setId(1);
         George.setName("George");
-        BoeingBuilder builder = new BoeingBuilder();
-        Boeing boeingPlane = (Boeing) builder.setId(1).setLength(1000).setNrOfEngines(2).setNrOfSeats(1000)
+        AirplaneBuilder builder = new BoeingBuilder();
+        Airplane boeingPlane = builder.setId(1).setLength(1000).setNrOfEngines(2).setNrOfSeats(1000)
                 .setTailHeight(300)
                 .setWingSpan(100).build();
         airportManager.addAirplane(generalAirport, boeingPlane);
         CloneFactory cloneFactory = new CloneFactory();
-        Boeing boeingPlane2 = (Boeing) cloneFactory.getClone(boeingPlane);
+        Airplane boeingPlane2 = (Airplane) cloneFactory.getClone(boeingPlane);
         boeingPlane2.id = 2;
         airportManager.addPassenger(boeingPlane, Marius);
         airportManager.addPassenger(boeingPlane2, George);
