@@ -13,7 +13,7 @@ public class AirportFacade {
     private ILuggageSystem luggageSystem;
     private AbstractAirportOperations airportOperations;
 
-    AirportFacade() {
+    public AirportFacade() {
         this.flightSystem = new FlightSystem();
         this.passengerSystemProxy = new ProxyPassengerSystem();
         this.luggageSystem = new LuggageSystem();
@@ -21,9 +21,11 @@ public class AirportFacade {
     }
 
     public void bookTicketAndLuggage(String passenger, String flightNumber, String luggageDetails) {
-        passengerSystemProxy.registerPassenger(passenger);
-        flightSystem.bookTicket(passenger, flightNumber);
-        luggageSystem.checkInLuggage(passenger, luggageDetails);
+        boolean passengerDoesntExist = passengerSystemProxy.registerPassenger(passenger);
+        if (passengerDoesntExist) {
+            flightSystem.bookTicket(passenger, flightNumber);
+            luggageSystem.checkInLuggage(passenger, luggageDetails);
+        }
     }
 
     public void addOperation(String operationType, int id) {

@@ -13,6 +13,7 @@ public class ProxyPassengerSystem implements IPassengerSystem {
     @Override
     public boolean registerPassenger(String passengerName) {
         if (passengerCashe.contains(passengerName)) {
+            System.out.println("Passenger " + passengerName + " is already booked on another flight");
             return false;
         } else {
             passengerCashe.add(passengerName);
